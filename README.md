@@ -158,11 +158,6 @@ Output the following:
 ## $i18n
 - An object which contains the localization messages for the current language.
 
-## $format(message, [arguments])
-- Formats the messages.
-- message: `String` **required**
-- arguments: `Array | Object` **optional**
-
 # Options
 
 ## Plugin options
