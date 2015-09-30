@@ -4,8 +4,8 @@ Internationalization plugin of Vue.js
 
 
 # Requirements
-- Vue.js ^`0.12.0`
-- JQuery ^`2.1.4`
+- [Vue.js](https://github.com/yyx990803/vue) ^`0.12.0`
+- [JQuery](https://github.com/jquery/jquery) ^`2.1.4`
 
 # Instllation
 
@@ -76,7 +76,9 @@ Output the following:
   <p>ザ・ワールド</p>
 </div>
 ```
-# Formatting
+# Formatting Messages
+
+This plugin could work together with the [vue-format](https://github.com/Haixing-Hu/vue-format/) plugin.
 
 ## Named formatting
 
@@ -86,6 +88,24 @@ JSON file: `resources/i18n/en.json`
 message: {
   "hello": "Hello {name}!"
 }
+```
+
+Javascript file:
+```javascript
+var Vue = require('vue')
+var i18n = require('vue-i18n')
+var format = require('vue-format')
+
+// set plugin
+Vue.use(i18n, {
+  basePath: 'resources/i18n'
+})
+Vue.use(format)
+
+// create instance
+new Vue({
+  el: '#test-i18n'
+})
 ```
 
 Template the following:
