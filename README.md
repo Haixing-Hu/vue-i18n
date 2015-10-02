@@ -1,11 +1,16 @@
 # vue-i18n
 
-Internationalization plugin of Vue.js
+[![Build Status](https://circleci.com/gh/Haixing-Hu/vue-i18n/tree/master.svg?style=shield)](https://circleci.com/gh/Haixing-Hu/vue-i18n/tree/master)
+[![Coverage Status](https://coveralls.io/repos/Haixing-Hu/vue-i18n/badge.svg?branch=master&service=github)](https://coveralls.io/github/Haixing-Hu/vue-i18n?branch=master)
+[![bitHound Score](https://www.bithound.io/github/Haixing-Hu/vue-i18n/badges/score.svg)](https://www.bithound.io/github/Haixing-Hu/vue-i18n)
+[![Dependency Status](https://david-dm.org/Haixing-Hu/vue-i18n.svg)](https://david-dm.org/Haixing-Hu/vue-i18n)
+[![devDependency Status](https://david-dm.org/Haixing-Hu/vue-i18n/dev-status.svg)](https://david-dm.org/Haixing-Hu/vue-i18n#info=devDependencies)
 
+Yet another internationalization plugin for Vue.js.
 
 # Requirements
-- [Vue.js](https://github.com/yyx990803/vue) ^`0.12.0`
-- [JQuery](https://github.com/jquery/jquery) ^`2.1.4`
+- [Vue.js](https://github.com/yyx990803/vue) `^0.12.10`
+- [JQuery](https://github.com/jquery/jquery) `^2.1.4`
 
 # Instllation
 
