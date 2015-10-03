@@ -24,11 +24,11 @@
     }
   },
   "scripts": {
-    "build": "gulp build",
-    "test": "gulp test:coveralls",
-    "coverage": "gulp test:coverage",
-    "coveralls": "gulp test:coveralls",
-    "ci": "gulp test:coveralls && gulp build"
+    "build": "bower install && gulp build",
+    "test": "bower install && gulp test:coveralls",
+    "coverage": "bower install && gulp test:coverage",
+    "coveralls": "bower install && gulp test:coveralls",
+    "ci": "bower install && gulp test:coveralls && gulp build"
   },
   "engines": {
     "node": ">=0.10.0"
