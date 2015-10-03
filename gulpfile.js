@@ -14,10 +14,11 @@ var dirs = pkg.configs.directories;
 // ---------------------------------------------------------------------
 
 gulp.task("clean", function (done) {
-  del([ dirs.archive, dirs.dist, dirs.coverage ], done);
+  del([ dirs.dist, dirs.coverage ]);
+  done();
 });
 
-gulp.task("webpack-dev", function(callback) {
+gulp.task("webpack-dev", function(done) {
   // modify some webpack config options
   var webpackDevConfig = Object.create(webpackConfig);
   webpackDevConfig.devtool = "sourcemap";
@@ -30,11 +31,11 @@ gulp.task("webpack-dev", function(callback) {
     gutil.log("[webpack:build-dev]", stats.toString({
       colors: true
     }));
-    callback();
+    done();
   });
 });
 
-gulp.task("webpack", function(callback) {
+gulp.task("webpack", function(done) {
   // modify some webpack config options
   var webpackProdConfig = Object.create(webpackConfig);
   webpackProdConfig.plugins.push(new webpack.DefinePlugin({
@@ -50,7 +51,7 @@ gulp.task("webpack", function(callback) {
     gutil.log("[webpack:build]", stats.toString({
       colors: true
     }));
-    callback();
+    done();
   });
 });
 

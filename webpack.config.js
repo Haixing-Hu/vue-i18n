@@ -12,7 +12,7 @@ var banner = pkg.name + " v" + version + "\n" +
 
 module.exports = {
   entry: {
-    "vue-format": path.join(__dirname, dirs.src, "vue-format.js")
+    "vue-i18n": path.join(__dirname, dirs.src, "vue-i18n.js")
   },
   resolve: {
     root: [__dirname],
