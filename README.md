@@ -17,60 +17,67 @@ Yet another internationalization plugin for Vue.js.
 ## npm
 
 ```shell
-$ npm install vuejs-i18n
+$ npm install vue-i18n-plugin
 ```
 
 ## bower
 
 ```shell
-$ bower install vuejs-i18n
+$ bower install vue-i18n-plugin
 ```
 
 # Usage
 
-JSON file: `resources/i18n/en.json`
+JSON file: `resources/i18n/en-US.json`
 
 ```json
-message: {
-  "hello": "the world"
+{
+  "message": {
+    "hello": "Hello",
+    "world": "World"
+  }
 }
 ```
 
-JSON file: `resources/i18n/ja.json`
+JSON file: `resources/i18n/zh-CN.json`
 ```json
-message: {
-  "hello": "ザ・ワールド"
+{
+  "message": {
+    "hello": "您好",
+    "world": "世界"
+  }
 }
 ```
 
 ```javascript
-var Vue = require('vue')
-var i18n = require('vue-i18n')
+var Vue = require('vue');
+var i18n = require('vue-i18n');
 
 // set plugin
 Vue.use(i18n, {
   basePath: 'resources/i18n'
-})
+});
 
 // create instance
 new Vue({
   el: '#test-i18n',
   beforeCompile: function() {
-    this.$language = "ja";
+    this.$setLanguage("zh-CN");
   },
   methods: {
     switchLanguage: function(lang) {
-      this.$language = lang;
+      this.$setLanguage(lang);
     }
   }
-})
+});
 ```
 
 Template the following:
 
 ```html
 <div id="test-i18n" class="message">
-  <p>{{$i18n.message.hello}}</p>
+  <p>Language: {{$language}}</p>
+  <p>{{$i18n.message.hello}}, {{$i18n.message.world}}</p>
 </div>
 ```
 
@@ -78,7 +85,8 @@ Output the following:
 
 ```html
 <div id="test-i18n" class="message">
-  <p>ザ・ワールド</p>
+  <p>Language: zh-CN</p>
+  <p>您好, 世界</p>
 </div>
 ```
 # Formatting Messages
@@ -90,27 +98,29 @@ This plugin could work together with the [vue-format](https://github.com/Haixing
 JSON file: `resources/i18n/en.json`
 
 ```json
-message: {
-  "hello": "Hello {name}!"
+{
+  message: {
+    "hello": "Hello {name}!"
+  }
 }
 ```
 
 Javascript file:
 ```javascript
-var Vue = require('vue')
-var i18n = require('vue-i18n')
-var format = require('vue-format')
+var Vue = require('vue');
+var i18n = require('vue-i18n');
+var format = require('vue-format');
 
 // set plugin
 Vue.use(i18n, {
   basePath: 'resources/i18n'
-})
-Vue.use(format)
+});
+Vue.use(format);
 
 // create instance
 new Vue({
   el: '#test-i18n'
-})
+});
 ```
 
 Template the following:
@@ -157,11 +167,20 @@ Output the following:
 
 # API
 
-## $language
-- The code of the current language. Setting this value will change the language and reload the localization messages according to the new language.
+## `$setLanguage(lang)`
 
-## $i18n
-- An object which contains the localization messages for the current language.
+Sets the current language. Calling this value will reload the localization files
+according to the new language and change the current displayed language.
+
+- `lang`: the code of the new language.
+
+## `$language`
+
+Stores the current language.
+
+## `$i18n`
+
+An object which contains the localization messages for the current language.
 
 # Options
 
@@ -169,20 +188,35 @@ Output the following:
 
 ```javascript
 Vue.use(plugin, {
-  defaultLanguage: "en",
-  basePath: "resources/i18n"
+  baseUrl: "i18n"
+  fallbackLanguage: "en-US",
+  timeout: 500,
+  async: false
 })
 ```
 
-### defaultLanguage
-Specify the code of the default langauge. If the current language is not specified, the default language will be used. If the localization JSON file of the specified language is not found, the localization JSON file of the default language will be loaded.
+### `baseUrl`
+Specify the base URL of the localization files, which could be either an
+absolute URL, or a relative URL relative to the current javascript file.
 
-The default value of this option is "en".
+The default value of this option is `i18n`.
 
-### basePath
-Specify the base path of the localization JSON files, relative to the current javascript file.
+### `fallbackLanguage`
 
-The default value of this option is ".".
+Specify the code of the fallback langauge. If the localization file of the
+current language cannot be load, the localization file of the fallback language
+will be load.
+
+The default value of this option is `en-US`.
+
+### `timeout`
+
+The timeout for the AJAX calls, in milliseconds. Default value is `500`.
+
+### `async`
+
+Indicates whether to load the localization file asynchronously. Default value
+is `false`.
 
 # Contributing
 - Fork it !
@@ -197,7 +231,6 @@ The default value of this option is ".".
 ```shell
 $ gulp test
 ```
-
 
 # License
 
