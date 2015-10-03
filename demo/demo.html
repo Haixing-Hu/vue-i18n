@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" class="fixed-footer">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <title>vue-i18n plugin demo</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <select v-model="language">
+      <option value="en-US">US English</option>
+      <option value="zh-CN">Simplified Chinese</option>
+      <option value="js-JP">Japanese</option>
+    </select>
+    <p>language: {{language}}</p>
+    <p>$language: {{$language}}</p>
+    <p>message.hello: {{$i18n.message.hello}}</p>
+    <p>message.world: {{$i18n.message.world}}</p>
+    <p>Test Inherited Component: <hello-world></hello-world></p>
+    <p>Test Non-inherited Component: <world-hello></world-hello></p>
+  </div>
+  <script type="text/javascript" src="./demo.all.js"></script>
+</body>
+</html>

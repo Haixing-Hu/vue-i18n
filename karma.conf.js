@@ -13,7 +13,14 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "./test/specs/**/*.js"
+      "./lib/jquery/dist/jquery.js",
+      "./test/specs/**/*.js",
+      {
+        pattern: "./test/specs/i18n/*.json",
+        watched: false,
+        included: false,
+        served: true
+      }
     ],
 
     // list of files to exclude
@@ -60,6 +67,9 @@ module.exports = function (config) {
       }]
     },
     */
+
+    // Hostname to be used when capturing browsers.
+    hostname: "localhost",
 
     // web server port
     port: 9876,
