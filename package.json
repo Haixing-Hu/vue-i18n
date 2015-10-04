@@ -1,7 +1,7 @@
 {
   "name": "vue-i18n-plugin",
   "description": "A Vue.js plugin provides the internationalization function.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "Haixing Hu",
     "email": "starfish.hu@gmail.com"
