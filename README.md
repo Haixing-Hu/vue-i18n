@@ -179,22 +179,53 @@ is `false`.
 - Push to the branch: `git push origin my-new-topic`
 - Submit a pull request to `dev` branch of `Haixing-Hu/vue-i18n` repository !
 
+# Building and Testing
 
-# Building Scripts
+First you should install all depended NPM packages. The NPM packages are used
+for building and testing this package.
 
-First you should install all depended NPM packages.
 ```shell
 $ npm install
 ```
 
-Then build the project.
+Then install all depended bower packages. The bower packages are depended by
+this packages.
+
 ```shell
-$ npm build
+$ bower install
 ```
 
-The following script tests the project.
+Now you can build the project.
 ```shell
-$ npm test
+$ gulp build
+```
+
+The following command will test the project.
+```shell
+$ gulp test
+```
+
+The following command will perform the test and generate a coverage report.
+```shell
+$ gulp test:coverage
+```
+
+The following command will perform the test, generate a coverage report, and
+upload the coverage report to [coveralls.io](https://coveralls.io/).
+```shell
+$ gulp test:coveralls
+```
+
+You can also run `bower install` and `gulp build` together with the following
+command:
+```shell
+npm build
+```
+
+Or run `bower install` and `gulp test:coveralls` together with the following
+command:
+```shell
+npm test
 ```
 
 # License
