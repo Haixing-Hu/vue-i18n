@@ -180,10 +180,21 @@ is `false`.
 - Submit a pull request to `dev` branch of `Haixing-Hu/vue-i18n` repository !
 
 
-# Testing
+# Building Scripts
 
+First you should install all depended NPM packages.
 ```shell
-$ gulp test
+$ npm install
+```
+
+Then build the project.
+```shell
+$ npm build
+```
+
+The following script tests the project.
+```shell
+$ npm test
 ```
 
 # License
