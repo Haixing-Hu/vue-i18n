@@ -1,6 +1,4 @@
 // Karma configuration
-var BowerWebpackPlugin = require("bower-webpack-plugin");
-var path = require("path");
 
 module.exports = function (config) {
   var settings = {
