@@ -33,5 +33,5 @@ module.exports = {
     path: path.join(__dirname, dirs.dist),
     filename: "[name].js",
     sourceMapFilename: "[file].map"
-  },
+  }
 };
