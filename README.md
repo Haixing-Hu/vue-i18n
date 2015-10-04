@@ -93,67 +93,21 @@ Output the following:
 
 This plugin could work together with the [vue-format](https://github.com/Haixing-Hu/vue-format/) plugin.
 
-## Named formatting
-
 JSON file: `resources/i18n/en.json`
 
 ```json
 {
-  message: {
-    "hello": "Hello {name}!"
+  "message": {
+    "hello": "Hello {0}, {1}!"
   }
 }
 ```
 
-Javascript file:
-```javascript
-var Vue = require('vue');
-var i18n = require('vue-i18n');
-var format = require('vue-format');
-
-// set plugin
-Vue.use(i18n, {
-  basePath: 'resources/i18n'
-});
-Vue.use(format);
-
-// create instance
-new Vue({
-  el: '#test-i18n'
-});
-```
-
 Template the following:
 
 ```html
 <div class="message">
-  <p>{{ $format($i18n.message.hello, {name: "world"}) }}</p>
-</div>
-```
-
-Output the following:
-
-```html
-<div class="message">
-  <p>Hello world!</p>
-</div>
-```
-
-## List formatting
-
-JSON file: `resources/i18n/en.json`
-
-```json
-message: {
-  "hello": "Hello {0}, {1}!"
-}
-```
-
-Template the following:
-
-```html
-<div class="message">
-  <p>{{ $format($i18n.message.hello, ["world", 123]) }}</p>
+  <p>{{ $i18n.message.hello | format "world" 123 }}</p>
 </div>
 ```
 
