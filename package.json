@@ -1,7 +1,7 @@
 {
   "name": "vue-i18n-plugin",
   "description": "A Vue.js plugin provides the internationalization function.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Haixing Hu",
     "email": "starfish.hu@gmail.com"
@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/Haixing-Hu/vue-i18n/issues"
   },
+  "main": [
+    "src/vue-i18n.js"
+  ],
   "configs": {
     "directories": {
       "dist": "dist",
@@ -34,8 +37,9 @@
     "node": ">=0.10.0"
   },
   "devDependencies": {
-    "bower": "^1.5.2",
-    "bower-update": "^0.1.0",
+    "bower": "^1.5.3",
+    "bower-update-all": "^0.1.1",
+    "npm-check-updates": "^2.3.0",
     "bower-webpack-plugin": "^0.1.8",
     "del": "^2.0.2",
     "gulp": "^3.8.10",
@@ -57,7 +61,6 @@
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.0.1",
-    "npm-update-outdated": "^0.1.6",
     "phantomjs": "^1.9.18",
     "requirejs": "^2.1.20",
     "run-sequence": "^1.0.2",

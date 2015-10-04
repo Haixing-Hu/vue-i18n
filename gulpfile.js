@@ -88,25 +88,17 @@ gulp.task('test:coveralls', function(done) {
 gulp.task("build-dev", function (done) {
   runSequence(
     "clean",
-    "test",
-    "webpack-dev",
+    "test:coverage",
+    // "webpack-dev",
   done);
 });
 
 gulp.task("build", function (done) {
   runSequence(
     "clean",
-    "test",
-    "webpack-dev",
-    "webpack",
-  done);
-});
-
-gulp.task("archive", function (done) {
-  runSequence(
-    "test",
-    "build",
-    "archive:zip",
+    "test:coverage",
+    // "webpack-dev",
+    // "webpack",
   done);
 });
 
