@@ -2,9 +2,9 @@ var assert = require("assert");
 var Vue = require("vue");
 var VueI18n = require("../../src/vue-i18n.js");
 
-describe("vue-i18n", function() {
 
-  var VmBase = {
+function getVM(rootId, initialLanguage) {
+  return Vue.extend({
     template: "<div>" +
                 "<p class='lang'>{{$language}}</p>" +
                 "<p class='hello'>{{$i18n.message.hello}}</p>" +
@@ -21,8 +21,20 @@ describe("vue-i18n", function() {
         template: "<span>{{$i18n.message.world}}, {{$i18n.message.hello}}</span>",
         inherit: false
       }
+    },
+    el: function() {
+      var el = document.createElement("div");
+      el.id = rootId;
+      document.body.appendChild(el);
+      return el;
+    },
+    beforeCompile: function() {
+      this.$setLanguage(initialLanguage);
     }
-  };
+  });
+}
+
+describe("vue-i18n", function() {
 
   describe("default options", function() {
     before(function() {
@@ -33,18 +45,7 @@ describe("vue-i18n", function() {
 
     context("normal", function() {
       it("en-US", function(done) {
-        var VM = Vue.extend({
-          mixins: [VmBase],
-          el: function() {
-            var el = document.createElement("div");
-            el.id = "default-opt-en-US";
-            document.body.appendChild(el);
-            return el;
-          },
-          beforeCompile: function() {
-            this.$setLanguage("en-US");
-          }
-        });
+        var VM = getVM("default-opt-en-US", "en-US");
         var vm = new VM();
         vm.$nextTick(function() {
           var lang = document.querySelector("#default-opt-en-US .lang");
@@ -62,18 +63,7 @@ describe("vue-i18n", function() {
       });
 
       it("zh-CN", function(done) {
-        var VM = Vue.extend({
-          mixins: [VmBase],
-          el: function() {
-            var el = document.createElement("div");
-            el.id = "default-opt-zh-CN";
-            document.body.appendChild(el);
-            return el;
-          },
-          beforeCompile: function() {
-            this.$setLanguage("zh-CN");
-          }
-        });
+        var VM = getVM("default-opt-zh-CN", "zh-CN");
         var vm = new VM();
         vm.$nextTick(function() {
           var lang = document.querySelector("#default-opt-zh-CN .lang");
@@ -93,18 +83,7 @@ describe("vue-i18n", function() {
 
     context("fallback language", function() {
       it("ja-JP", function(done) {
-        var VM = Vue.extend({
-          mixins: [VmBase],
-          el: function() {
-            var el = document.createElement("div");
-            el.id = "default-opt-ja-JP";
-            document.body.appendChild(el);
-            return el;
-          },
-          beforeCompile: function() {
-            this.$setLanguage("ja-JP");
-          }
-        });
+        var VM = getVM("default-opt-ja-JP", "ja-JP");
         var vm = new VM();
         vm.$nextTick(function() {
           var lang = document.querySelector("#default-opt-ja-JP .lang");
@@ -133,18 +112,7 @@ describe("vue-i18n", function() {
 
     context("normal", function() {
       it("en-US", function(done) {
-        var VM = Vue.extend({
-          mixins: [VmBase],
-          el: function() {
-            var el = document.createElement("div");
-            el.id = "customized-opt-en-US";
-            document.body.appendChild(el);
-            return el;
-          },
-          beforeCompile: function() {
-            this.$setLanguage("en-US");
-          }
-        });
+        var VM = getVM("customized-opt-en-US", "en-US");
         var vm = new VM();
         vm.$nextTick(function() {
           var lang = document.querySelector("#customized-opt-en-US .lang");
@@ -162,18 +130,7 @@ describe("vue-i18n", function() {
       });
 
       it("zh-CN", function(done) {
-        var VM = Vue.extend({
-          mixins: [VmBase],
-          el: function() {
-            var el = document.createElement("div");
-            el.id = "customized-opt-zh-CN";
-            document.body.appendChild(el);
-            return el;
-          },
-          beforeCompile: function() {
-            this.$setLanguage("zh-CN");
-          }
-        });
+        var VM = getVM("customized-opt-zh-CN", "zh-CN");
         var vm = new VM();
         vm.$nextTick(function() {
           var lang = document.querySelector("#customized-opt-zh-CN .lang");
@@ -193,18 +150,7 @@ describe("vue-i18n", function() {
 
     context("fallback language", function() {
       it("ja-JP", function(done) {
-        var VM = Vue.extend({
-          mixins: [VmBase],
-          el: function() {
-            var el = document.createElement("div");
-            el.id = "customized-opt-ja-JP";
-            document.body.appendChild(el);
-            return el;
-          },
-          beforeCompile: function() {
-            this.$setLanguage("ja-JP");
-          }
-        });
+        var VM = getVM("customized-opt-ja-JP", "ja-JP");
         var vm = new VM();
         vm.$nextTick(function() {
           var lang = document.querySelector("#customized-opt-ja-JP .lang");
