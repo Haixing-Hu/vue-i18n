@@ -17,12 +17,7 @@ var vm = new Vue({
   },
   components: {
     "hello-world": {
-      template: "<span>{{$i18n.message.hello}}, {{$i18n.message.world}}</span>",
-      inherit: true
-    },
-    "world-hello": {
-      template: "<span>{{$i18n.message.world}}, {{$i18n.message.hello}}</span>",
-      inherit: false
+      template: "<span>{{$i18n.message.hello}}, {{$i18n.message.world}}</span>"
     }
   }
 });
