@@ -55,7 +55,7 @@ var i18n = require('vue-i18n');
 
 // set plugin
 Vue.use(i18n, {
-  basePath: 'resources/i18n'
+  baseUrl: 'resources/i18n'
 });
 
 // create instance
