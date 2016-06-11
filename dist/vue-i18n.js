@@ -1,6 +1,6 @@
 /*!
- * vue-i18n v0.1.0
- * (c) 2015 Haixing Hu
+ * vue-i18n-plugin v0.2.0
+ * (c) 2016 Haixing Hu
  * Released under the MIT License.
  */
 /******/ (function(modules) { // webpackBootstrap
@@ -90,13 +90,17 @@
 	
 	  // merge the default options
 	  var opts = jquery.extend({}, DEFAULT_OPTIONS, options);
+	
 	  /**
 	   * Sets the UI language.
 	   *
 	   * @param language
 	   *    the code of the language to be set.
+	   * @param callback
+	   *    the optional callback function which will be called after refreshing
+	   *    the i18n file.
 	   */
-	  Vue.prototype.$setLanguage = function(language) {
+	  Vue.prototype.$setLanguage = function(language, callback) {
 	    // console.debug("Setting language: " + language);
 	    var url = opts.baseUrl + "/" + language + ".json";
 	    var fallbackUrl = opts.baseUrl + "/" + opts.fallbackLanguage + ".json";
@@ -114,6 +118,9 @@
 	        Vue.prototype.$language = language;
 	        Vue.prototype.$i18n = data;
 	        update(vm.$root);
+	        if (callback) {
+	          callback();
+	        }
 	      },
 	      error: function() {
 	        // console.debug("Failed to load: " + url);
@@ -129,6 +136,9 @@
 	            Vue.prototype.$language = language;
 	            Vue.prototype.$i18n = data;
 	            update(vm.$root);
+	            if (callback) {
+	              callback();
+	            }
 	          },
 	          error: function() {
 	            throw new Error("Cannot load localization file: " + url);

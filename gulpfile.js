@@ -89,7 +89,7 @@ gulp.task("build-dev", function (done) {
   runSequence(
     "clean",
     "test:coverage",
-    // "webpack-dev",
+    "webpack-dev",
   done);
 });
 
@@ -97,8 +97,8 @@ gulp.task("build", function (done) {
   runSequence(
     "clean",
     "test:coverage",
-    // "webpack-dev",
-    // "webpack",
+    "webpack-dev",
+    "webpack",
   done);
 });
 
