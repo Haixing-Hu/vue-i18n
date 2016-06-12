@@ -1,7 +1,7 @@
 {
   "name": "vue-i18n-plugin",
   "description": "A Vue.js plugin provides the internationalization function.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "keywords": [
     "Vue.js",
     "format",
@@ -25,7 +25,7 @@
     "node_modules"
   ],
   "dependencies": {
-    "vue": "^1.0.7",
-    "jquery": "^2.1.4"
+    "vue": "^1.0.24",
+    "jquery": "^3.0.0"
   }
 }

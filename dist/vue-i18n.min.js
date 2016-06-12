@@ -1,5 +1,5 @@
 /*!
- * vue-i18n-plugin v0.2.0
+ * vue-i18n-plugin v0.2.1
  * (c) 2016 Haixing Hu
  * Released under the MIT License.
  */
