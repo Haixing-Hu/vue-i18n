@@ -9,8 +9,8 @@
 Yet another internationalization plugin for Vue.js.
 
 # Requirements
-- [Vue.js](https://github.com/yyx990803/vue) `^0.12.10`
-- [JQuery](https://github.com/jquery/jquery) `^2.1.4`
+- [Vue.js](https://github.com/yyx990803/vue) `^1.0.24`
+- [JQuery](https://github.com/jquery/jquery) `^3.0.0`
 
 # Instllation
 
