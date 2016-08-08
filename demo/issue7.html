@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <title>vue-i18n plugin demo</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <select v-model="language">
+      <option value="en-US">US English</option>
+      <option value="zh-CN">Simplified Chinese</option>
+      <option value="js-JP">Japanese</option>
+    </select>
+    <p>language: {{language}}</p>
+    <p>$language: {{$language}}</p>
+    <input v-model="user"/>
+    <p>Format a message: {{$i18n.message.hello_user | format user}}</p>
+  </div>
+  <script type="text/javascript" src="./issue7.all.js"></script>
+</body>
+</html>

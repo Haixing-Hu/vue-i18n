@@ -51,11 +51,14 @@
 
 	var Vue = __webpack_require__(1);
 	var i18n = __webpack_require__(2);
+	var format = __webpack_require__(3);
+	Vue.use(format);
 	Vue.use(i18n);
 
 	var vm = new Vue({
 	  el: "#app",
 	  data: {
+	    user: "Tom",
 	    language: "en-US"
 	  },
 	  watch: {
@@ -65,11 +68,6 @@
 	  },
 	  created: function() {
 	    this.$setLanguage(this.language);
-	  },
-	  components: {
-	    "hello-world": {
-	      template: "<span>{{$i18n.message.hello}}, {{$i18n.message.world}}</span>"
-	    }
 	  }
 	});
 
@@ -10279,6 +10277,67 @@
 	  }
 	}
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A plugin of Vue.js providing a function for formatting messages.
+	 *
+	 * @author Haixing Hu
+	 */
+	exports.install = function (Vue, options) {
+	  var format = __webpack_require__(4);
+	  // add the $format function
+	  Vue.prototype.$format = format;
+	  // register the format filter
+	  Vue.filter("format", format);
+	};
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	/**
+	 * Formats messages.
+	 *
+	 * @param template
+	 *    the message template, which contains zero or more placeholders, e.g.,
+	 *    "{0}", "{1}", ...
+	 * @param arg1, arg2, ...
+	 *    zero or more arguments used to replace the corresponding placeholders
+	 *    in the message template.
+	 * @return
+	 *    the formatted message.
+	 * @author Haixing Hu
+	 */
+
+	var PLACEHOLDER_REGEXP = /\{([0-9a-zA-Z]+)\}/g;
+
+	module.exports = function() {
+	  if (arguments.length === 0) {
+	    return "";
+	  } else if (arguments.length === 1) {
+	    return arguments[0];
+	  } else {
+	    var args = arguments;
+	    var message = args[0];
+	    return message.replace(PLACEHOLDER_REGEXP, function(match, placeholder, index) {
+	      if (message[index - 1] === "{" && message[index + match.length] === "}") {
+	        return placeholder; // deal with the escaped brackets
+	      } else {
+	        var i = parseInt(placeholder);
+	        var result = args[i + 1];
+	        if (result === null || result === undefined) {
+	          return "";
+	        } else {
+	          return result;
+	        }
+	      }
+	    });
+	  }
+	};
 
 /***/ }
 /******/ ]);

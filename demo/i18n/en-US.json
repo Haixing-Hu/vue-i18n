@@ -1,6 +1,7 @@
 {
   "message": {
     "hello": "Hello",
-    "world": "World"
+    "world": "World",
+    "hello_user": "Hello {0}"
   }
 }

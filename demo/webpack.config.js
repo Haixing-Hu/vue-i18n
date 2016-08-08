@@ -12,7 +12,8 @@ var banner = pkg.name + " v" + version + "\n" +
 
 module.exports = {
   entry: {
-    "demo": "./demo.js"
+    "demo": "./demo.js",
+    "issue7": "./issue7.js"
   },
   // resolve: {
   //   root: [__dirname],

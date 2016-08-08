@@ -25,7 +25,10 @@
     "node_modules"
   ],
   "dependencies": {
-    "vue": "^1.0.24",
+    "vue": "^1.0.26",
     "jquery": "^2.2.4"
+  },
+  "devDependencies": {
+    "vue-format": "^0.3.1"
   }
 }
