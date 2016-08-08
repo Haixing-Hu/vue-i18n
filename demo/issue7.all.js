@@ -59,15 +59,25 @@
 	  el: "#app",
 	  data: {
 	    user: "Tom",
+	    concated_list: "1,2,3",
+	    list: [1,2,3],
 	    language: "en-US"
 	  },
 	  watch: {
 	    "language": function(val, oldVal) {
 	      this.$setLanguage(val);
+	    },
+	    "concated_list": function(val, oldVal) {
+	      this.list = val.split(",");
 	    }
 	  },
 	  created: function() {
 	    this.$setLanguage(this.language);
+	  },
+	  methods: {
+	    getUser: function() {
+	      return user;
+	    }
 	  }
 	});
 

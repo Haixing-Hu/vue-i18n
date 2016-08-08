@@ -17,7 +17,10 @@
     <p>language: {{language}}</p>
     <p>$language: {{$language}}</p>
     <input v-model="user"/>
-    <p>Format a message: {{$i18n.message.hello_user | format user}}</p>
+    <p>Format a message with a variable: {{$i18n.message.hello_user | format user}}</p>
+    <p>Format a message with a function result: {{$i18n.message.hello_user | format getUser()}}</p>
+    <input v-model="concated_list">
+    <p>Format a message with length of a list: {{$i18n.message.hello_user | format list.length}}</p>
   </div>
   <script type="text/javascript" src="./issue7.all.js"></script>
 </body>
